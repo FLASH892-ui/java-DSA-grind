@@ -1,37 +1,30 @@
 import java.util.*;
 import java.util.Scanner;
 class Traversal{
-    static void spiral(int[][] matrix, int row, int column){
-        int top = 0; 
-        int bottom = row - 1;
-        int left = 0; 
-        int right = column - 1;
-        
-        while (top <= bottom && left <= right) {
-
-            for (int i = left; i <= right; i++) {
-                System.out.print(matrix[top][i] + " ");
+    static void boundary(int[][] matrix, int row, int column){
+        if(row == 1){
+            for(int j=0; j<column; j++){
+                System.out.print(matrix[0][j]+" ");
             }
-            top++;
-
-            for (int i = top; i <= bottom; i++) {
-                System.out.print(matrix[i][right] + " ");
+            return;
+        }
+        if(column == 1){
+            for(int i = 0; i <row; i++) {
+                System.out.print(matrix[i][0] + " ");
             }
-            right--;
-
-            if (top <= bottom) {
-                for (int i = right; i >= left; i--) {
-                    System.out.print(matrix[bottom][i] + " ");
-                }
-                bottom--;
-            }
-            
-            if (left <= right) {
-                for (int i = bottom; i >= top; i--) {
-                    System.out.print(matrix[i][left] + " ");
-                }
-                left++;
-            }
+            return;
+        }
+        for(int j=0;j<column-1;j++){
+            System.out.print(matrix[0][j]+" ");
+        }
+        for(int i = 0; i < row - 1; i++) {
+            System.out.print(matrix[i][column - 1] + " ");
+        }
+        for(int j = column - 1; j > 0; j--) {
+            System.out.print(matrix[row - 1][j] + " ");
+        }
+        for(int i = row - 1; i > 0; i--) {
+            System.out.print(matrix[i][0] + " ");
         }
     }
 }
